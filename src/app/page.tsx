@@ -54,7 +54,8 @@ function Home() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/posts`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/posts` ||
+            "http://localhost:3333/posts"
         ); // Make a request to the localhost API http://localhost:3333
         if (response.ok) {
           const apiData: PostsList = await response.json();
