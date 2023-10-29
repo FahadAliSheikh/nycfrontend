@@ -1,9 +1,20 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const PostCard = ({ post }: any) => {
+  const router = useRouter();
+
+  const handleClick = (post: any) => {
+    console.log("clicked on post", post);
+    router.push(post.url);
+  };
   return (
-    <div className="mb-6 flex flex-wrap">
+    <div
+      className="mb-6 flex flex-wrap cursor-pointer"
+      onClick={() => handleClick(post)}
+    >
       <div className="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
         <div
           className="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
